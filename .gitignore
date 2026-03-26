@@ -1,0 +1,21 @@
+# 临时文件
+*.tmp
+*.bak
+*.swp
+*~
+
+# 编辑器缓存
+.DS_Store
+.vscode/
+.idea/
+
+# 构建输出
+*.pdf
+*.docx
+build/
+dist/
+
+# 敏感信息（如果有）
+secrets/
+*.key
+*.pem
