@@ -2,10 +2,10 @@
   "meta": {
     "id": "PRD-001",
     "title": "2048 游戏产品需求文档",
-    "version": "1.0",
+    "version": "1.1",
     "status": "draft",
     "createdAt": "2026-03-26T09:48:00+08:00",
-    "updatedAt": "2026-03-26T09:48:00+08:00",
+    "updatedAt": "2026-03-26T10:36:00+08:00",
     "author": "刘伟世",
     "reviewers": [],
     "relatedDocs": [
@@ -26,7 +26,11 @@
       "支持跨平台使用（Web/移动端）",
       "数据统计与排行榜功能"
     ],
-    "platforms": ["web", "ios", "android"]
+    "platforms": [
+      "web",
+      "ios",
+      "android"
+    ]
   },
   "features": [
     {
@@ -53,7 +57,9 @@
       "status": "todo",
       "assignee": null,
       "estimatedDays": 3,
-      "dependencies": ["F001"],
+      "dependencies": [
+        "F001"
+      ],
       "acceptanceCriteria": [
         "合并时累加得分",
         "本地存储最高分",
@@ -83,7 +89,9 @@
       "status": "todo",
       "assignee": null,
       "estimatedDays": 2,
-      "dependencies": ["F001"],
+      "dependencies": [
+        "F001"
+      ],
       "acceptanceCriteria": [
         "保存历史状态",
         "限制撤销次数",
@@ -98,7 +106,9 @@
       "status": "todo",
       "assignee": null,
       "estimatedDays": 8,
-      "dependencies": ["F002"],
+      "dependencies": [
+        "F002"
+      ],
       "acceptanceCriteria": [
         "支持游客模式",
         "第三方登录",
@@ -113,7 +123,9 @@
       "status": "todo",
       "assignee": null,
       "estimatedDays": 5,
-      "dependencies": ["F005"],
+      "dependencies": [
+        "F005"
+      ],
       "acceptanceCriteria": [
         "实时排名更新",
         "每日/每周/全时段榜单",
@@ -128,7 +140,9 @@
       "status": "todo",
       "assignee": null,
       "estimatedDays": 3,
-      "dependencies": ["F003"],
+      "dependencies": [
+        "F003"
+      ],
       "acceptanceCriteria": [
         "音效开关",
         "流畅动画（60fps）",
@@ -227,14 +241,29 @@
   },
   "techStack": {
     "frontend": {
-      "web": ["HTML5", "CSS3", "React/Vue"],
-      "mobile": ["React Native", "Flutter"]
+      "web": [
+        "HTML5",
+        "CSS3",
+        "React/Vue"
+      ],
+      "mobile": [
+        "React Native",
+        "Flutter"
+      ]
     },
     "backend": {
       "optional": true,
-      "stack": ["Node.js", "Python (Flask/FastAPI)"],
-      "database": ["MongoDB", "PostgreSQL"],
-      "cache": ["Redis"]
+      "stack": [
+        "Node.js",
+        "Python (Flask/FastAPI)"
+      ],
+      "database": [
+        "MongoDB",
+        "PostgreSQL"
+      ],
+      "cache": [
+        "Redis"
+      ]
     },
     "deployment": {
       "web": "CDN 静态托管",
@@ -271,18 +300,31 @@
     {
       "name": "原版 2048",
       "url": "https://play2048.co/",
-      "strengths": ["简洁", "经典"],
-      "weaknesses": ["功能单一"]
+      "strengths": [
+        "简洁",
+        "经典"
+      ],
+      "weaknesses": [
+        "功能单一"
+      ]
     },
     {
       "name": "2048 Plus",
-      "strengths": ["多种模式"],
-      "weaknesses": ["UI 复杂"]
+      "strengths": [
+        "多种模式"
+      ],
+      "weaknesses": [
+        "UI 复杂"
+      ]
     },
     {
       "name": "Threes!",
-      "strengths": ["创新玩法"],
-      "weaknesses": ["学习成本高"]
+      "strengths": [
+        "创新玩法"
+      ],
+      "weaknesses": [
+        "学习成本高"
+      ]
     }
   ],
   "team": {
@@ -296,20 +338,47 @@
     {
       "version": "1.0",
       "name": "MVP",
-      "features": ["F001", "F002", "F003"],
+      "features": [
+        "F001",
+        "F002",
+        "F003"
+      ],
       "targetDate": "2026-04-26"
     },
     {
       "version": "1.1",
       "name": "增强版",
-      "features": ["F004", "F007"],
+      "features": [
+        "F004",
+        "F007"
+      ],
       "targetDate": "2026-05-30"
     },
     {
       "version": "2.0",
       "name": "社交版",
-      "features": ["F005", "F006"],
+      "features": [
+        "F005",
+        "F006"
+      ],
       "targetDate": "2026-06-30"
     }
-  ]
+  ],
+  "gameRules": {
+    "boardSize": "4x4",
+    "initialTiles": 2,
+    "tileSpawnProbability": {
+      "2": 0.7,
+      "4": 0.3
+    },
+    "movements": [
+      "up",
+      "down",
+      "left",
+      "right"
+    ],
+    "mergeRule": "相同数字的相邻方块合并为两倍",
+    "winCondition": "出现 2048 方块",
+    "loseCondition": "棋盘填满且无法合并"
+  }
 }
