@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>2048 游戏原型</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #faf8ef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 48px;
+            color: #776e65;
+            font-weight: bold;
+        }
+        .score-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .score-box {
+            background: #bbada0;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .score-label {
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .score-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .undo-info {
+            text-align: center;
+            color: #776e65;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .game-board {
+            background: #bbada0;
+            border-radius: 10px;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .tile {
+            aspect-ratio: 1;
+            background: #cdc1b4;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #776e65;
+            position: relative;
+        }
+        .tile[data-value="2"] { background: #eee4da; }
+        .tile[data-value="4"] { background: #ede0c8; }
+        .tile[data-value="8"] { background: #f2b179; color: #f9f6f2; }
+        .tile[data-value="16"] { background: #f59563; color: #f9f6f2; }
+        .tile[data-value="32"] { background: #f67c5f; color: #f9f6f2; }
+        .tile[data-value="64"] { background: #f65e3b; color: #f9f6f2; }
+        .tile[data-value="128"] { background: #edcf72; color: #f9f6f2; font-size: 28px; }
+        .tile[data-value="256"] { background: #edcc61; color: #f9f6f2; font-size: 28px; }
+        .tile[data-value="512"] { background: #edc850; color: #f9f6f2; font-size: 28px; }
+        .tile[data-value="1024"] { background: #edc53f; color: #f9f6f2; font-size: 24px; }
+        .tile[data-value="2048"] { background: #edc22e; color: #f9f6f2; font-size: 24px; }
+        .instructions {
+            text-align: center;
+            color: #776e65;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .arrows {
+            font-size: 24px;
+            margin-top: 5px;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .btn {
+            background: #8f7a66;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #9f8a76;
+        }
+        .note {
+            margin-top: 20px;
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2048</h1>
+        </div>
+        
+        <div class="score-container">
+            <div class="score-box">
+                <div class="score-label">Score</div>
+                <div class="score-value">1234</div>
+            </div>
+            <div class="score-box">
+                <div class="score-label">Best</div>
+                <div class="score-value">5678</div>
+            </div>
+        </div>
+        
+        <div class="undo-info">
+            撤销剩余: ↶ 3次
+        </div>
+        
+        <div class="game-board">
+            <div class="tile" data-value="2">2</div>
+            <div class="tile" data-value="4">4</div>
+            <div class="tile" data-value="8">8</div>
+            <div class="tile" data-value="16">16</div>
+            <div class="tile" data-value="32">32</div>
+            <div class="tile" data-value="64">64</div>
+            <div class="tile" data-value="128">128</div>
+            <div class="tile" data-value="256">256</div>
+            <div class="tile" data-value="512">512</div>
+            <div class="tile" data-value="1024">1024</div>
+            <div class="tile" data-value="2">2</div>
+            <div class="tile" data-value="4">4</div>
+            <div class="tile" data-value="8">8</div>
+            <div class="tile" data-value="16">16</div>
+            <div class="tile" data-value="32">32</div>
+            <div class="tile" data-value="64">64</div>
+        </div>
+        
+        <div class="instructions">
+            滑动方向
+            <div class="arrows">↑ ↓ ← →</div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn">🔄 新游戏</button>
+            <button class="btn">↶ 撤销</button>
+            <button class="btn">🏆 排行榜</button>
+        </div>
+        
+        <div class="note">
+            📐 2048 游戏原型 - 高保真 Mockup<br>
+            包含真实配色方案和交互元素
+        </div>
+    </div>
+</body>
+</html>

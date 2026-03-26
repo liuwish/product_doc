@@ -1,0 +1,384 @@
+{
+  "meta": {
+    "id": "PRD-001",
+    "title": "2048 游戏产品需求文档",
+    "version": "1.1",
+    "status": "draft",
+    "createdAt": "2026-03-26T09:48:00+08:00",
+    "updatedAt": "2026-03-26T10:36:00+08:00",
+    "author": "刘伟世",
+    "reviewers": [],
+    "relatedDocs": [
+      "docs/requirements/2048_game_prd.md"
+    ]
+  },
+  "product": {
+    "name": "2048",
+    "positioning": "经典数字益智游戏，通过滑动方块合并相同数字，目标是获得 2048 数字方块",
+    "targetUsers": [
+      "休闲游戏玩家",
+      "益智游戏爱好者",
+      "10-50 岁用户群"
+    ],
+    "goals": [
+      "提供流畅的游戏体验",
+      "易于上手，有深度挑战",
+      "支持跨平台使用（Web/移动端）",
+      "数据统计与排行榜功能"
+    ],
+    "platforms": [
+      "web",
+      "ios",
+      "android"
+    ]
+  },
+  "features": [
+    {
+      "id": "F001",
+      "name": "核心游戏玩法",
+      "description": "4×4 网格，滑动合并相同数字",
+      "priority": "high",
+      "status": "todo",
+      "assignee": null,
+      "estimatedDays": 10,
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "支持上下左右四个方向滑动",
+        "相同数字方块自动合并",
+        "每次移动后随机生成新方块",
+        "判断胜利/失败条件"
+      ]
+    },
+    {
+      "id": "F002",
+      "name": "计分系统",
+      "description": "实时得分显示和历史最高分记录",
+      "priority": "high",
+      "status": "todo",
+      "assignee": null,
+      "estimatedDays": 3,
+      "dependencies": [
+        "F001"
+      ],
+      "acceptanceCriteria": [
+        "合并时累加得分",
+        "本地存储最高分",
+        "得分动画效果"
+      ]
+    },
+    {
+      "id": "F003",
+      "name": "基础 UI 界面",
+      "description": "游戏主界面、方块样式、按钮布局",
+      "priority": "high",
+      "status": "todo",
+      "assignee": null,
+      "estimatedDays": 5,
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "响应式布局",
+        "方块颜色渐变",
+        "平滑动画过渡"
+      ]
+    },
+    {
+      "id": "F004",
+      "name": "撤销功能",
+      "description": "每局 3 次撤销机会",
+      "priority": "medium",
+      "status": "todo",
+      "assignee": null,
+      "estimatedDays": 2,
+      "dependencies": [
+        "F001"
+      ],
+      "acceptanceCriteria": [
+        "保存历史状态",
+        "限制撤销次数",
+        "UI 提示剩余次数"
+      ]
+    },
+    {
+      "id": "F005",
+      "name": "用户系统",
+      "description": "注册/登录、云端数据同步",
+      "priority": "low",
+      "status": "todo",
+      "assignee": null,
+      "estimatedDays": 8,
+      "dependencies": [
+        "F002"
+      ],
+      "acceptanceCriteria": [
+        "支持游客模式",
+        "第三方登录",
+        "数据云端同步"
+      ]
+    },
+    {
+      "id": "F006",
+      "name": "排行榜",
+      "description": "全球/好友排行榜",
+      "priority": "medium",
+      "status": "todo",
+      "assignee": null,
+      "estimatedDays": 5,
+      "dependencies": [
+        "F005"
+      ],
+      "acceptanceCriteria": [
+        "实时排名更新",
+        "每日/每周/全时段榜单",
+        "Top 100 展示"
+      ]
+    },
+    {
+      "id": "F007",
+      "name": "音效与动画",
+      "description": "方块移动/合并音效、动画效果",
+      "priority": "low",
+      "status": "todo",
+      "assignee": null,
+      "estimatedDays": 3,
+      "dependencies": [
+        "F003"
+      ],
+      "acceptanceCriteria": [
+        "音效开关",
+        "流畅动画（60fps）",
+        "触觉反馈（移动端）"
+      ]
+    }
+  ],
+  "timeline": {
+    "start": "2026-04-01",
+    "end": "2026-05-10",
+    "milestones": [
+      {
+        "date": "2026-04-05",
+        "event": "PRD 确认",
+        "status": "pending"
+      },
+      {
+        "date": "2026-04-12",
+        "event": "UI 设计稿交付",
+        "status": "pending"
+      },
+      {
+        "date": "2026-04-26",
+        "event": "MVP 完成（F001-F003）",
+        "status": "pending"
+      },
+      {
+        "date": "2026-05-03",
+        "event": "测试与优化",
+        "status": "pending"
+      },
+      {
+        "date": "2026-05-10",
+        "event": "正式发布",
+        "status": "pending"
+      }
+    ]
+  },
+  "kpis": {
+    "user": [
+      {
+        "metric": "DAU",
+        "target": "> 10,000",
+        "unit": "users"
+      },
+      {
+        "metric": "次日留存率",
+        "target": "> 40%",
+        "unit": "percent"
+      },
+      {
+        "metric": "7 日留存率",
+        "target": "> 20%",
+        "unit": "percent"
+      },
+      {
+        "metric": "平均游戏时长",
+        "target": "> 5 分钟/天",
+        "unit": "minutes"
+      }
+    ],
+    "game": [
+      {
+        "metric": "平均每局时长",
+        "target": "3-5 分钟",
+        "unit": "minutes"
+      },
+      {
+        "metric": "2048 达成率",
+        "target": "10-15%",
+        "unit": "percent"
+      },
+      {
+        "metric": "平均得分",
+        "target": "2000-3000",
+        "unit": "points"
+      }
+    ],
+    "business": [
+      {
+        "metric": "广告展示率",
+        "target": "> 80%",
+        "unit": "percent"
+      },
+      {
+        "metric": "CTR",
+        "target": "> 2%",
+        "unit": "percent"
+      },
+      {
+        "metric": "ARPU",
+        "target": "> $0.5/月",
+        "unit": "dollars"
+      }
+    ]
+  },
+  "techStack": {
+    "frontend": {
+      "web": [
+        "HTML5",
+        "CSS3",
+        "React/Vue"
+      ],
+      "mobile": [
+        "React Native",
+        "Flutter"
+      ]
+    },
+    "backend": {
+      "optional": true,
+      "stack": [
+        "Node.js",
+        "Python (Flask/FastAPI)"
+      ],
+      "database": [
+        "MongoDB",
+        "PostgreSQL"
+      ],
+      "cache": [
+        "Redis"
+      ]
+    },
+    "deployment": {
+      "web": "CDN 静态托管",
+      "api": "云服务器（阿里云/AWS）"
+    }
+  },
+  "risks": [
+    {
+      "category": "technical",
+      "description": "动画流畅度优化（60fps）",
+      "severity": "medium",
+      "mitigation": "使用 CSS3 硬件加速"
+    },
+    {
+      "category": "technical",
+      "description": "老旧浏览器兼容性",
+      "severity": "low",
+      "mitigation": "Polyfill + 降级方案"
+    },
+    {
+      "category": "product",
+      "description": "用户留存不足",
+      "severity": "high",
+      "mitigation": "增加社交与竞技元素"
+    },
+    {
+      "category": "business",
+      "description": "广告与用户体验平衡",
+      "severity": "medium",
+      "mitigation": "A/B 测试优化广告频率"
+    }
+  ],
+  "competitors": [
+    {
+      "name": "原版 2048",
+      "url": "https://play2048.co/",
+      "strengths": [
+        "简洁",
+        "经典"
+      ],
+      "weaknesses": [
+        "功能单一"
+      ]
+    },
+    {
+      "name": "2048 Plus",
+      "strengths": [
+        "多种模式"
+      ],
+      "weaknesses": [
+        "UI 复杂"
+      ]
+    },
+    {
+      "name": "Threes!",
+      "strengths": [
+        "创新玩法"
+      ],
+      "weaknesses": [
+        "学习成本高"
+      ]
+    }
+  ],
+  "team": {
+    "productManager": 1,
+    "uiDesigner": 1,
+    "frontendEngineer": 2,
+    "backendEngineer": 1,
+    "qaEngineer": 1
+  },
+  "versions": [
+    {
+      "version": "1.0",
+      "name": "MVP",
+      "features": [
+        "F001",
+        "F002",
+        "F003"
+      ],
+      "targetDate": "2026-04-26"
+    },
+    {
+      "version": "1.1",
+      "name": "增强版",
+      "features": [
+        "F004",
+        "F007"
+      ],
+      "targetDate": "2026-05-30"
+    },
+    {
+      "version": "2.0",
+      "name": "社交版",
+      "features": [
+        "F005",
+        "F006"
+      ],
+      "targetDate": "2026-06-30"
+    }
+  ],
+  "gameRules": {
+    "boardSize": "4x4",
+    "initialTiles": 2,
+    "tileSpawnProbability": {
+      "2": 0.7,
+      "4": 0.3
+    },
+    "movements": [
+      "up",
+      "down",
+      "left",
+      "right"
+    ],
+    "mergeRule": "相同数字的相邻方块合并为两倍",
+    "winCondition": "出现 2048 方块",
+    "loseCondition": "棋盘填满且无法合并"
+  }
+}
